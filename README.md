@@ -5,6 +5,8 @@
 4. python -m pip install cython
 5. sudo apt-get install libyaml-dev
 6. python setup.py build develop
+7. Download YOLO weights from this [Weights Link](https://drive.google.com/file/d/11sNhbbLZJb6RqRNuPHPNkAtQej6DIcDz/view?usp=sharing) and store it inside "detector/yolo/data" directory.
+[Note: You might have to create data directory inside detector/yolo directory.]
 
 ## Use AlphaPose to estimate 2D key-points:
 1. Add any image in examples/demo folder.
