@@ -12,7 +12,7 @@ from api.setup import SingleImageAlphaPose, get_args
 def evaluate(save_img, save_keypts, save_json):
 	outputpath = "examples/res/"
 	if not os.path.exists(outputpath + '/vis'):
-		os.mkdir(outputpath + '/vis')
+		os.makedirs(outputpath + '/vis')
 
 	# Create Network.
 	args, cfg = get_args()
