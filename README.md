@@ -1,3 +1,19 @@
+## Setup Details:
+1. git clone https://github.com/vinits5/AlphaPose.git
+2. cd AlphaPose
+3. conda env create -f environment.yml --name alphapose
+4. python -m pip install cython
+5. sudo apt-get install libyaml-dev
+6. python setup.py build develop
+
+## Use AlphaPose to estimate 2D key-points:
+1. Add any image in examples/demo folder.
+2. Open the api/inference.py file and modify the "im_name" variable with the image path.
+3. python api/inference.py (Run this command from AlphaPose directory and not from api directory)
+4. Results will be stored in examples/res/ directory.
+
+
+
 
 <div align="center">
     <img src="docs/logo.jpg", width="400">
