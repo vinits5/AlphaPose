@@ -24,9 +24,9 @@ from alphapose.utils.writer import DataWriter
 
 """----------------------------- Demo options -----------------------------"""
 parser = argparse.ArgumentParser(description='AlphaPose Demo')
-parser.add_argument('--cfg', type=str, required=True,
+parser.add_argument('--cfg', type=str, default="configs/coco/resnet/256x192_res50_lr1e-3_1x.yaml",
                     help='experiment configure file name')
-parser.add_argument('--checkpoint', type=str, required=True,
+parser.add_argument('--checkpoint', type=str, default="pretrained_models/fast_res50_256x192.pth",
                     help='checkpoint file name')
 parser.add_argument('--sp', default=False, action='store_true',
                     help='Use single process for pytorch')
@@ -35,7 +35,7 @@ parser.add_argument('--detector', dest='detector',
 parser.add_argument('--detfile', dest='detfile',
                     help='detection result file', default="")
 parser.add_argument('--indir', dest='inputpath',
-                    help='image-directory', default="")
+                    help='image-directory', default="examples/demo/")
 parser.add_argument('--list', dest='inputlist',
                     help='image-list', default="")
 parser.add_argument('--image', dest='inputimg',
@@ -189,6 +189,7 @@ if __name__ == "__main__":
         pose_model.to(args.device)
     pose_model.eval()
 
+
     runtime_profile = {
         'dt': [],
         'pt': [],
@@ -250,6 +251,7 @@ if __name__ == "__main__":
                         hm_j = (hm_j[0:int(len(hm_j) / 2)] + hm_j_flip) / 2
                     hm.append(hm_j)
                 hm = torch.cat(hm)
+                print(hm)
                 if args.profile:
                     ckpt_time, pose_time = getTime(ckpt_time)
                     runtime_profile['pt'].append(pose_time)
