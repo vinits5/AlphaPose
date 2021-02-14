@@ -7,6 +7,7 @@
 6. python setup.py build develop
 7. Download YOLO weights from this [Weights Link](https://drive.google.com/file/d/11sNhbbLZJb6RqRNuPHPNkAtQej6DIcDz/view?usp=sharing) and store it inside "detector/yolo/data" directory.
 [Note: You might have to create data directory inside detector/yolo directory.]
+8. Download weights for AlphaPose [Weights Link](https://drive.google.com/file/d/1kQhnMRURFiy7NsdS8EFL-8vtqEXOgECn/view) and store this file in "pretrained_models" directory.
 
 ## Use AlphaPose to estimate 2D key-points:
 1. Add any image in examples/demo folder.
