@@ -321,7 +321,7 @@ class SingleImageAlphaPose():
 					'det time: {dt:.4f} | pose time: {pt:.4f} | post processing: {pn:.4f}'.format(
 						dt=np.mean(runtime_profile['dt']), pt=np.mean(runtime_profile['pt']), pn=np.mean(runtime_profile['pn']))
 				)
-			print('===========================> Finish Model Running.')
+			# print('===========================> Finish Model Running.')
 		except Exception as e:
 			print(repr(e))
 			print('An error as above occurs when processing the images, please check it')
