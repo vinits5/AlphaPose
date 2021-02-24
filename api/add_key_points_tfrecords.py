@@ -205,7 +205,8 @@ def modify_tfrecord(path, store_path):
 				continue
 			else:
 				pose = bytes(pose, 'UTF-8')
-				key_pts, flag = evaluate(args, cfg, demo, data['person'])
+				key_pts, flag = evaluate(args, cfg, demo, data['person'].numpy()[0])
+				key_pts = key_pts.astype(np.float)
 				if flag:
 					person = tf.io.encode_jpeg(person, format='rgb')
 
@@ -219,6 +220,6 @@ def modify_tfrecord(path, store_path):
 	print("Size of the dataset: ",dataset_size)     # 21070 / 20970
 
 if __name__ == '__main__':
-	path = './uplara_tops_v11_pose_data.record'
-    store_path = 'uplara_tops_v11_pose_data_key_pts.record'
-    images = modify_tfrecord(path, store_path)
+	path = '/content/uplara_tops_v11_pose_data_onlylabelled.record'
+	store_path = 'uplara_tops_v11_pose_data_key_pts.record'
+	images = modify_tfrecord(path, store_path)
