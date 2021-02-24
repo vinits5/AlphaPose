@@ -200,20 +200,22 @@ def modify_tfrecord(path, store_path):
 			sleeves = data['sleeves'].numpy()[0]
 			pose = data['pose'].numpy()[0].decode('UTF-8')
 			heatmap = data['heatmap']
+			heatmap = heatmap.numpy().reshape(-1).astype(np.float)
+			# import pdb; pdb.set_trace()
 
 			if pose == '-' or pose == 'back':
 				continue
 			else:
 				pose = bytes(pose, 'UTF-8')
 				key_pts, flag = evaluate(args, cfg, demo, data['person'].numpy()[0])
-				key_pts = key_pts.astype(np.float)
+				key_pts = key_pts.astype(np.float).reshape(-1)
 				if flag:
 					person = tf.io.encode_jpeg(person, format='rgb')
 
 					example = serialize_example(cloth, clothMask, clotharmseg, person, personMask, 
 												torso_gt, full, l_arm_gt, r_arm_gt, shoulder_left,
 												shoulder_right, key_pts, clothno, personno,
-												densepose, sleeves, data['pose'], heatmap)
+												densepose, sleeves, pose, heatmap)
 					writer.write(example)
 					dataset_size += 1
 
